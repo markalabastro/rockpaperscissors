@@ -34,9 +34,8 @@ function game() {
     }
   }
 
+  //stores the player input return value in playerSelection
   let playerSelection = getPlayerInput();
-  // console.log(playerSelection);
-
 
   // Generates the computer input using Math.random with a range from 1-3 and converts it to the correct format using a switch statement.
   function getComputerInput() {
@@ -58,10 +57,8 @@ function game() {
     }
   }
 
+  //stores the computer input return value in computerSelection
   let computerSelection = getComputerInput();
-  // console.log(computerSelection);
-
-  // console.log(computerSelection +" "+ playerSelection);
 
   // Logic for rock paper scissors game.
   function playGame(playerSelection, computerSelection) {
