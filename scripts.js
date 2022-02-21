@@ -12,30 +12,40 @@
 let playerWins = 0;
 let computerWins = 0;
 
-function game() {
+let rock = document.querySelector(".rock")
+let paper = document.querySelector(".paper")
+let scissors = document.querySelector(".scissors")
+
+rock.addEventListener('click',() => {game("rock")})
+paper.addEventListener('click', () => {game("paper")})
+scissors.addEventListener('click', () => {game("scissors")})
+
+function game(playerInput) {
 
   // Receives player input and converts it to lower case. If an invalid choice is typed, it will call the function again.
-  function getPlayerInput() {
-    let playerInput = prompt("Do you choose rock, paper, or scissors?");
-    let convertedPlayerInput = playerInput.toLowerCase();
+  // function getPlayerInput() {
+    // let playerInput = prompt("Do you choose rock, paper, or scissors?");
+    // let convertedPlayerInput = playerInput.toLowerCase();
 
-    if (convertedPlayerInput === "rock") {
-      playerInput = "rock";
-      return playerInput;
-    } else if (convertedPlayerInput === "paper") {
-      playerInput = "paper";
-      return playerInput;
-    } else if (convertedPlayerInput === "scissors") {
-      playerInput = "scissors";
-      return playerInput;
-    } else {
-      console.log("That is not a valid choice, please try again");
-      return getPlayerInput();
-    }
-  }
+    // if (convertedPlayerInput === "rock") {
+    //   playerInput = "rock";
+    //   return playerInput;
+    // } else if (convertedPlayerInput === "paper") {
+    //   playerInput = "paper";
+    //   return playerInput;
+    // } else if (convertedPlayerInput === "scissors") {
+    //   playerInput = "scissors";
+    //   return playerInput;
+    // } else {
+    //   console.log("That is not a valid choice, please try again");
+    //   return getPlayerInput();
+    // }
+   
+    
+  // }
 
   //stores the player input return value in playerSelection
-  let playerSelection = getPlayerInput();
+  let playerSelection = playerInput;
 
   // Generates the computer input using Math.random with a range from 1-3 and converts it to the correct format using a switch statement.
   function getComputerInput() {
@@ -97,18 +107,15 @@ function game() {
   }
   playGame(playerSelection, computerSelection);
 
+  let score = document.querySelector(".score")
+  score.textContent = `Your score: ${playerWins} | Computer score: ${computerWins}`
   console.log(`Your score: ${playerWins} ||| Computer score: ${computerWins}`);
 
-  if (playerWins == 5) {
-    console.log("You have WON the match");
-    return;
-  } else if (computerWins == 5) {
-    console.log("You have LOST the match");
-    return;
+  if(playerWins === 5){
+    document.querySelector(".question").textContent = "Congratulations you won!"
+  } else if (computerWins === 5){
+    document.querySelector(".question").textContent = "Sorry, but you lost!"
   }
 }
 
-//Keep playing the game until one of the conditions is no longer true.
-while (playerWins < 5 && computerWins < 5) {
-  game();
-}
+
